@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>CSE442 | Final Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:100" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.css" integrity="sha512-8M8By+q+SldLyFJbybaHoAPD6g07xyOcscIOQEypDzBS+sTde5d6mlK2ANIZPnSyxZUqJfCNuaIvjBUi8/RS0w==" crossorigin="anonymous" />
+  <style>
+    /* FULLPAGE.JS STUFF -------------------------------------------------------------------*/
+    /* section (slides) properties -----------------------------------------------------*/
+    .s1 {
+      background-color: #767f8b;
+      background-size: cover;
+    }
+
+    .s2 {
+      background-color: #b3b7b8;
+      background-size: cover;
+    }
+
+    .s3 {
+      background-color: #5c6068;
+      background-size: cover;
+    }
+
+    .s4 {
+      background-color: #d3d3d3;
+      background-size: cover;
+    }
+
+    .s5 {
+      background-color: #989ca3;
+      background-size: cover;
+    }
+
+    .s6 {
+      background-color: #767f8b;
+      background-size: cover;
+    }
+
+    .s7 {
+      background-color: #b3b7b8;
+      background-size: cover;
+    }
+
+    .s8 {
+      background-color: #5c6068;
+      background-size: cover;
+    }
+
+    .s9 {
+      background-color: #d3d3d3;
+      background-size: cover;
+    }
+
+    /* navigation dots properties ------------------------------------------------------*/
+    span {
+      background: black !important;
+    }
+
+    /* Some font styling properties ----------------------------------------------------*/
+    h1 {
+      font-family: 'Montserrat';
+      font-size: 36;
+      text-align: center;
+      color: black;
+    }
+
+    h3 {
+      font-family: 'Montserrat';
+      font-size: 18;
+      text-align: right;
+      color: black;
+    }
+
+    h4 {
+      font-family: 'Montserrat';
+      font-size: 24;
+      text-align: center;
+      color: black;
+    }
+
+    h5 {
+      font-family: 'Montserrat';
+      font-size: 100px;
+      text-align: center;
+      color: black;
+    }
+
+    p {
+      font-family: 'Montserrat';
+      font-size: 18;
+      text-align: right;
+      color: black;
+    }
+
+    p4 {
+      font-family: 'Montserrat';
+      font-size: 18px;
+      align: center;
+      text-align: center;
+      color: black;
+    }
+
+    p7 {
+      font-family: 'Montserrat';
+      font-size: 18px;
+      text-align: center;
+      color: black;
+    }
+
+    #s7-data {
+      left: 30px;
+      width: 300px;
+    }
+
+    /* this is properties for the scatterplot ----------------------------------*/
+    #S7-title {
+      position: absolute;
+      top: 0;
+      left: 30px;
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: -2px;
+      line-height: 100%;
+    }
+
+    #S7-chart {
+      position: absolute;
+      top: 50px;
+      left: 250px;
+      width: 900px;
+    }
+
+    #S7-about {
+      position: absolute;
+      top: 300px;
+      left: 30px;
+      width: 200px;
+      font-size: 16px;
+    }
+
+    #S7-menu {
+      position: absolute;
+      top: 75px;
+      left: 30px;
+    }
+
+    #S7-y-axis-menu {
+      font-family: 'Montserrat';
+      font-weight: bold;
+      font-size: 12px;
+      text-align: left;
+      color: black;
+    }
+
+
+
+    h2 {
+      font-size: 11px;
+      margin: 0;
+      color: #666;
+    }
+
+    text {
+      font-family: 'Montserrat';
+      font-size: 12px;
+      font-color: black;
+      fill: black;
+    }
+
+    /* things for the menu */
+    ul {
+      list-style: none;
+      font-size: 16px;
+      padding: 0;
+      margin-top: 3px;
+    }
+
+    li {
+      font-weight: 100;
+    }
+
+    li {
+      cursor: pointer;
+      padding-bottom: 5px;
+    }
+
+    li:hover {
+      color: #000;
+    }
+
+    li.preview {
+      font-weight: 400;
+    }
+
+    li.selected {
+      font-weight: bold;
+    }
+
+    /* properties for the who has access to vaccines slide */
+
+    .col-sm {
+      position: relative;
+      width: 670px;
+      margin: auto;
+      /* padding: auto; */
+    }
+
+    .col-sm-2 {
+      position: relative;
+      font-size: 100;
+      font-weight: 100;
+      margin-top: -125px;
+    }
+
+    #mortality-projection {
+      font-weight: 900;
+      margin-top: 50px;
+    }
+
+    #access_to_vax_click_right {
+      position: relative;
+      margin-right: 50px;
+    }
+
+    #access_to_vax_about_data {
+      position: relative;
+      text-align: center;
+      font-size: 25px;
+      font-weight: 300;
+      margin-right: 150px;
+      margin-left: 150px;
+    }
+
+    #viz1607975956242{
+      position: fixed;
+      margin-left: 20%;
+      margin-bottom: 10px;
+    }
+
+    #cali-pie-chart-text {
+      float: left;
+      text-align: center;
+      margin-left: 25px;
+      vertical-align: middle;
+    }
+
+    #global-vaccine-denial-text {
+      text-align: center;
+    }
+
+    #cali-pie-chart {
+      vertical-align: middle;
+      float:right;
+      /* display: block;
+      margin-left: auto;
+      margin-right: auto; */
+    }
+
+    /* .children {
+      width:1000px;
+      height:600px;
+      background: url("little_children_white.png") no-repeat;
+      background-size: 100% auto;
+    } */
+
+    /* .children svg {
+      mix-blend-mode: multiply;
+    } */
+
+    /* svg {
+      overflow:none;
+      padding:10px;
+      float:left;
+      width:400px;
+      height:400px;
+  } */
+
+    /* .cls-2 {
+      fill: #ffffff */
+      /* hex code with child mortality increase = #cd5252 */
+    /* } */
+
+    /* .iconPlain  {
+    fill:#ffffff;
+  }
+
+  .iconSelected  {
+    fill:#cd5252;
+  } */
+/* stuff for the sim */
+    .hexagon {
+      fill: #383b3f;
+      pointer-events: all;
+      stroke: black;
+      border-color: black;
+    }
+
+    .hexagon path {
+      -webkit-transition: fill 500ms linear;
+      transition: fill 500ms linear;
+    }
+
+    .hexagon :hover {
+      fill: green;
+    }
+
+    .hexagon .fill {
+      fill: rgb(170, 30, 30);
+      stroke-width: 2px;
+      stroke: #000;
+    }
+
+    .mesh {
+      fill: none;
+      stroke: #000;
+      stroke-opacity: .2;
+      pointer-events: none;
+    }
+
+    .border {
+      fill: none;
+      stroke: #000;
+      stroke-width: 0px;
+      pointer-events: none;
+    }
+
+    .rangeslider {
+      background: #5c6068;
+      width: 450px;
+      position: absolute;
+      top: 400px;
+      left: 10px;
+    }
+
+
+    .myslider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      cursor: pointer;
+      background: #383b3f;
+      width: 5%;
+      height: 20px;
+    }
+
+    .myslider:hover {
+      opacity: 1;
+    }
+
+    p2 {
+      display: inline-block;
+      padding-bottom: 30px;
+      background: #5c6068;
+      font-family: 'Montserrat';
+      font-size: 20px;
+      color: white;
+    }
+
+    span2 {
+      color: white;
+      background-color: #5c6068;
+      font-family: 'Montserrat';
+      font-size: 25px;
+      font-color: white;
+    }
+
+    .sim2 {
+      display: inline-block;
+      position: absolute;
+      top: 250px;
+      left: 500px;
+      width: 900px;
+      border-style: ridge;
+      border-width: 9px;
+      border-color: #383b3f;
+    }
+
+    #run {
+      border-radius: 8px;
+      border: 2px solid #383b3f;
+      background: #5e5c68;
+      position: absolute;
+      top: 650px;
+      left: 10px;
+      width: 290px;
+      font-size: 16px;
+    }
+
+    #clear {
+      border-radius: 8px;
+      border: 2px solid #383b3f;
+      background: #5e5c68;
+      position: absolute;
+      top: 650px;
+      left: 320px;
+      width: 100px;
+      font-size: 16px;
+    }
+
+    #show80 {
+      border-radius: 8px;
+      border: 2px solid #383b3f;
+      background: #5e5c68;
+      position: absolute;
+      top: 665px;
+      left: 1420px;
+      width: 50px;
+    }
+
+    #show60 {
+      border-radius: 8px;
+      border: 2px solid #383b3f;
+      background: #5e5c68;
+      position: absolute;
+      top: 545px;
+      left: 1420px;
+      width: 50px;
+    }
+
+    #show40 {
+      border-radius: 8px;
+      border: 2px solid #383b3f;
+      background: #5e5c68;
+      position: absolute;
+      top: 425px;
+      left: 1420px;
+      width: 50px;
+    }
+
+    #show20 {
+      border-radius: 8px;
+      border: 2px solid #383b3f;
+      background: #5e5c68;
+      position: absolute;
+      top: 305px;
+      left: 1420px;
+      width: 50px;
+    }
+
+    .myslider1 {
+      position: absolute;
+      top: 5px;
+      left: 305px;
+    }
+
+    .myslider3 {
+      position: absolute;
+      top: 65px;
+      left: 305px;
+    }
+
+    .myslider4 {
+      position: absolute;
+      top: 125px;
+      left: 305px;
+    }
+
+    .myslider5 {
+      position: absolute;
+      top: 185px;
+      left: 305px;
+    }
+
+    #pie {
+      position: absolute;
+      top: 500px;
+      left: 450px;
+    }
+
+    tutorial {
+      position: absolute;
+      top: 80px;
+      left: 5px;
+      text-align: left;
+      text-color: black;
+    }
+  </style>
+
+</head>
+
+<body>
+  <!-- Do not create any more div's outside of fullPage -->
+  <div id="fullPage">
+    <!-- Each section is a scrolled 'page'. Create new sections as you go -->
+    <div class="section s1">
+      <h1>Microchips and Anti Vaccination in Politics</h1>
+      <p style="position: absolute; left: 40%;">
+        <strong>Team Members</strong>: Ariel Shurygin, Andy Lee, Sonia Fereidooni
+      </p>
+    </div>
+    <div class="section s2">
+      <div class="slide">
+        <h1 style="position: absolute; top: 25px; left: 30px;">Disease and Death</h1>
+        <p style="position: absolute; font-size: 20px; top: 100px; left: 30px; width: 450px; text-align: left">
+          56 Million people died globally in 2017.<br>
+          19% of those deaths came from communicable diseases. That is roughly <strong>10.6 million deaths.</strong><br>
+          73% of those deaths came from non-communicable diseases, about <strong>40.9 million people.</strong><br>
+          8% of those deaths came from accidents, about <strong>4.48 million people.</strong><br>
+          For scale, Washington state has a population size of approximately <strong>7.6 million people</strong> while oregon has a size of about <strong>4.2 million people.</strong><br>
+          <br>
+        </p>
+        <img src="data/442.png" style="position: absolute; top: 100px; left: 480px; width: 1000px; height: 600px;">
+        <p style="position: absolute; font-size: 20px; top: 700px; left:30px;  text-align: left">
+          Today, COVID-19 is:
+          #1 cause of death in New York, Brazil, and Peru. <br>
+          #2 cause of death in England <br>
+          #3 cause of death in Sweden <br>
+        </p>
+        <p style="position: absolute; font-size: 20px; color:black; top: 30px; left: 1050px"> <u><b>Right Arrow to Learn About This Dataset -></b></u> </p>
+      </div>
+      <div class="slide">
+        <h1>About the data</h1>
+        <p7 id="s7-data">
+          This data was compiled from the Global Burden of Disease Study in 2017 where the deaths since 1990 to 2017 were studied.
+          The data shown is for deaths only by communicable diseases. The data was then retrieved from ourworldindata. <br>
+          COVID-19 death ranking was from thinkglobalhealth.org
+          <br>
+          Data can be found here: https://ourworldindata.org/causes-of-death
+        </p7>
+      </div>
+    </div>
+
+    <div class="section s3">
+      <div class="slide">
+        <div>
+          <tutorial>
+            <p style="text-align:left; ; font-size:20px; color:white; background: #5c6068;">
+              Lets see how well you can predict a pandemic! <br> <br>
+
+              Average spread rate: how many people does an infected vector cough on before it stops spreading the virus? <br>
+              Natural Immunity: what is the percent liklihood, that when exposed to a viral load, that a person is infected.<br>
+              Vaccine Immunity: Natural Immunity but for vaccinated persons. <br>
+              Vaccination rate: % of population getting vaccinated <br> <br>
+
+              Give it a try and guess how many will be infected <br> with our settings, click on hexagons to infect them<br> the percentage buttons are shortcuts!
+              <br> Once you have guessed, click run simulation <br> to see how you did
+            </p>
+          </tutorial>
+        </div>
+        <div class="simSlide">
+          <div class="rangeslider" style="display: inline-block"></div>
+          <div class="sim"> </div>
+          <button id="clear" onclick="clearAll()">CLEAR</button>
+          <button id="run" onclick="runSimulation()">RUN SIMULATION</button>
+          <p style="position: absolute; font-size: 20px; color:black; top: 30px; left: 1050px"> <u><b>Right Arrow to Learn About This Dataset -></b></u> </p>
+          <button id="show80" onclick="runSimulation(.843)">80%</button>
+          <button id="show60" onclick="runSimulation(.631)">60%</button>
+          <button id="show40" onclick="runSimulation(.421)">40%</button>
+          <button id="show20" onclick="runSimulation(.211)">20%</button>
+        </div>
+
+        <p style="position:absolute;left:250px;top:800px;text-align:center; font-size:20px; background:#5c6068; color: white;">
+          Feel free to change settings and explore factors on your own! <br>
+          Keep in mind due to natural variance between spread rates may cause more or less people to become infected by random chance.
+          <br>Pandemics are not a perfect science and super spreader events may cause an explosion of cases in a population.
+        </p>
+      </div>
+      <div class="slide">
+        <h1 style="position: absolute; top: 50px; left: 2700px;">Sources and data definitions.</h1>
+        <p style="position: absolute; top: 300px; left: 2000px; text-align: center; font-size: 25px; color:black;">
+          <b>The visualization seen is actually a query of a dataset created via a simulation program. <br>
+          The github for the simulation used may be found here: https://github.com/shanedk/Herd-Immunity-Simulator <br>
+          The simulation was adapted to run consequetivly for all combinations in the ranges displayed to the user, then calculated a variety of information <br>
+          Based on a population size of 1000 persons. All values were transformed into percentages and displayed as such to the user when they clicked run simulation. <br>
+
+            The hexagon format and interactive features were built upon with this base, found here: https://bl.ocks.org/mbostock/5249328.<br> </b>
+        </p>
+      </div>
+    </div>
+    <div class="section s4">
+      <h1 style="position: absolute; top: 25px; left: 600px;">What are Vaccines and how do they work?</h1>
+      <p style="position: absolute; font-size: 20px; top: 100px; left: 50px; text-align: left">
+        <b>Originally discovered by Edward Jenner in 1796, vaccines have become a quite normal part of our life, and are often seen as an annoyance in the western world.<br>
+        But how do vaccines protect us and others from diseases? <br>
+        Lets begin on a biological level, when a disease enters our body it produces a protein called antigen. <br>
+        Antigens are responsible for taking over host cells and reproducing a virus in a persons body. <br>
+        The bodies counter to antigen's are antibodies, antibodies are not a one size fits all solution however, and need to fit snugly around an antigen in order to <br>
+        neutralize it. Vaccines preform the much needed task of exposing a persons body to these antigens with a dead virus, rather than a real one capable of rapidly reproducing <br>
+        That way when a real virus comes along, the body will be able to respond much quicker with antibodies, rather than experimenting on different shapes. <br>
+        </b><br>
+      </p>
+      <img src="data/herdImmunityPic.png" style="position: absolute; top: 700px; left: 50px; width: 200px; height: 200px;">
+      <p style="position: absolute; font-size: 20px; top: 700px; left: 375px; text-align: right">
+        <b>But how can vaccines eradicate a disease, or protect those who havent even gotten a shot? <br>
+        If enough persons in a population are vaccinated, the virus will not be able to spread quickly, <br>
+        like a swimmer in honey vs water it will have a much harder time moving from person to person. <br>
+        This is called herd-immunity, and it is how vaccines protect those unable to get them, <br>
+        And it is also how we have eradicated diseases like polio from the USA and other western countries. <br>
+        While many believe vaccination to be a personal choice, it impacts more than just a single person <br>
+        Those who are unable to be exposed to a virus, even in small amounts, will be more protected in a population with high vaccine use versus low. <br>
+        </b></p>
+    </div>
+    <div class="section s5">
+      <div class="slide">
+        <tutorial style="font-family: 'Montserrat'; position:absolute; width: 600px; left: 800px; top: 130px; font-size: 20px">
+          Vaccines have been shown to be one of the most effective ways to fight under five mortality <br>in developing nations.
+          Non profits like the UN Childrens fund, have made vaccination <br> their focus in many of the countries pictured below.
+          While vaccines are part of a <br> larger picture of a country's overall health system, <br>they are a benchmark of a country's health network <br>
+          and are highly correlated with surviving childhood. <br>
+        </tutorial>
+        <tutorial style="font-family: 'Montserrat'; position:absolute; width: 700px; left: 50px; top: 550px; font-size: 20px;text-align: right;">
+          These two charts highlight vaccination's impact on our world. <br>
+          Above we see UNICEF's involvement in a number of impoverished or countries war-torn countries. <br>
+          Here we have see a slow increase in vaccination rates paired with an inverse trend of child mortality <br>
+          To the right we see the overall trend in the world regarding vaccination rates for Polio, <br>
+          a disease which we have widely eradicated thanks to vaccination programs like those run by UNICEF<br>
+        </tutorial>
+
+        <img width="700px" height="400px" style="position:absolute; top:50px; left:50px;" src="data/BCGUnder5(3).png">
+        <img width="550px" height="500px" style="position:absolute; top:400px; left:800px;" src="data/mortalityPolio4.png">
+        <p style="position: absolute; font-size: 20px; color:black; top: 30px; left: 1050px"> <u><b>Right Arrow to Learn About This Dataset -></b></u> </p>
+      </div>
+      <div class="slide">
+        <h1 style="position: absolute; top: 50px; left: 2675px;">Sources and data definitions.</h1>
+        <p style="position: absolute; top: 300px; left: 2100px; text-align: center; font-size: 25px; color:black;">
+          <b>
+            Both of these visualizations used aggregated and manipulated data originally pulled from the World Bank Data Portal <br>
+            and API tool. A variety of datasets were used to create the ending database, including GDP, Under 5 Mortality, and Vaccination records. <br>
+            The API tool may be found here: https://databank.worldbank.org/source/health-nutrition-and-population-statistics <br><br>
+
+            When these visualizations refer to Under 5 mortality they mean specifically the likelihood per 1000 live births <br>
+            that a child will reach five years old. Under five mortality does not include stillbirths or deaths correlated to childbirth <br>
+            However under five mortality DOES include deaths by non-preventable causes (accidents ect). <br><br>
+
+            When referring to vaccination rates of either Polio or BCG, the world bank measures a vaccination as the <br>
+            completion of the necessary cycle (including booster shots) of a particular vaccine, by a child's first birthday. <br>
+            Percentages are measured as the percentage of children between 12-23 months in the country for which the previous definition holds.
+          </b>
+      </div>
+    </div>
+    <div class="section s6">
+      <div class="slide">
+        <h1>Who has access to vaccines?</h1>
+          <div class="row align-items-center">
+            <h4>Individual Income (in USD)</h4>
+            <!--<div class="col-sm-2"><p id="value-mortality"></p></div>-->
+              <div class="col-sm"><div id="slider-income"></div></div>
+              <h4>Percentage of Population Vaccinated</h4>
+              <div class="col-sm"><div id="slider-vaccination"></div></div>
+              <h4 id="mortality-projection">Projected Under 5 Child Mortality from Vaccine-Preventable Diseases Rate</h4>
+              <div class="col-sm-2"><h5 id="value-mortality"></h5></div>
+              <p id="access_to_vax_click_right"> Click the right arrow key to learn more about the data. </p>
+      </div>
+      <div class="slide">
+        <h1>About the data</h1>
+        <p id="access_to_vax_about_data"> As mentioned in the previous slide, the Under 5 Child Mortality Rate refers to the projected rate of how many children under five years old will pass away due to vaccine-preventable causes, per 1000 live births. <br><br>The way the Under 5 Mortality Projection Rate is calculated based off (1) an individual's income in a certain population and (2) the estimated vaccinated percentage of the population that the individual is residing in is by a worldwide GDP dataset that allowed us to calculate the linear slope between the two factors and how they affect the overall Under 5 Child Mortality Rate. <br><br> Generally, as the income of an individual increases, the Under 5 Mortality Rate of the individual's population decreases. Symmetrically, as the percentage vaccinated of the individual's population increases, the projected Under 5 Mortality rate also decreases. When the projected Under 5 Mortality Rate is at 40%, for example, this means that for every 1000 live births, about 40% of these children will pass away due to a vaccine-preventable illness. <br><br> The sliders were implemented with aid from an example of D3 sliders found at the link: https://bl.ocks.org/johnwalley/e1d256b81e51da68f7feb632a53c3518.  </p>
+      </div>
+    </div>
+  </div>
+  <!-- INFLUENCE AND CREDIT TO PETER COOK: https://charts.animateddata.co.uk/whatmakesushappy/ -->
+    <div class="section s7">
+      <div class="slide">
+        <div id="S7-chart"></div>
+        <div id="S7-title">
+          <h1>How does access to vaccines vary among countries?</h1>
+        </div>
+        <div id="S7-about">
+          <p><strong>Is there a connection between the % of people under the age of 1 being vaccinated and economic/social measures such as GDP?</strong></p>
+          <p>This chart represents the vaccination % of a number of countries against different vaccinations for ten different outbreaks. With the types of
+            infectious disease vaccinations listed above, click the various vaccines above and to view trends. Hover over a dot to view the specific country!</p>
+        </div>
+        <div id="S7-menu">
+          <ul id="S7-y-axis-menu"></ul>
+        </div>
+        <p style="position: absolute; font-size: 20px; color:black; top: 750px; left: 30px"> <u><b>Right Arrow to Learn About This Dataset -></b></u> </p>
+      </div>
+      <div class="slide">
+        <h1>About the data</h1>
+        <p7 id="s7-data">
+          This data was compiled from the databank at worldbank where the percentage of vaccinations received are measured by the percentage of
+          under 1 year olds who have received the vaccine. <br>
+          This was our preferred way of measuring vaccine access as the last step for vaccine approval is typically
+          dependent on the pediatric results of trials - meaning that if it is approved for children then it is safe and effective to use for the entire population.
+          <br>
+          Data can be found here: https://databank.worldbank.org/source/health-nutrition-and-population-statistics
+        </p7>
+      </div>
+    </div>
+    <div class="section s8">
+      <h1 style="margin-bottom:-15px;">Vaccine Denial and Its Prevalence</h1>
+      <div style="display:inline-block;">
+      <p id="cali-pie-chart-text"> <img src="data/california_pie_chart.png" id = "cali-pie-chart" style="height: 380px; width: 1100px; margin-right: 25px;"><strong>Due to personal beliefs, many parents are able to excuse their children from required immunization using medical exemptions. In fact, in a substantial number of schools in California, more than half of kindergartners still do not have all of their required immunizations. 50% of California’s 58 counties have vaccination rates below the 95% threshold required for herd immunity. Although in recent years, vaccination rates in Californian children have gone up, in the 2016-2017 academic year, many kindergartners in California saw a spike in the lack of having adequate vaccinations. As we can see from the graph, even with the state of California having relatively stricter vaccination laws (with the passing of the 2019 vaccine bill), parents are still able to have their children exempt from proper vaccination. </strong></p>
+    </div>
+      <!-- <div style="display:inline-block;vertical-align:top;"> -->
+    <!-- </div> -->
+      <p id="global-vaccine-denial-text" style="margin-left: 25px; margin-right:25px; margin-top:-8px; margin-bottom:5px;"><strong>In all countries surveyed, a majority of the population does not believe that vaccines are unsafe. We can see that among the highest vaccination disapproval rates was France with a ~33% disapproval rate, whereas the lowest vaccination disapproval rate was Egypt with a disapproval rate of less than 1%. </strong></p>
+      <div class='tableauPlaceholder' id='viz1607975956242' style='position: relative'><noscript><a href='#'><img alt=' ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;PX&#47;PX37XQP45&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='path' value='shared&#47;PX37XQP45' /> <param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;PX&#47;PX37XQP45&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en' /><param name='filter' value='publish=yes' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1607975956242');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='80%';vizElement.style.height=(divElement.offsetWidth*0.30)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+    </div>
+    <div class="section s9">
+      <h1 style="position: absolute; top: 25px; left: 600px;">So how will vaccines change the course of COVID-19?</h1>
+      <p style="position: absolute; font-size: 20px; top: 100px; left: 100px; text-align: left">
+        <b>COVID-19 has demolished much more than our economy since it first emerged in Wuhan, China. <br>
+        With 1.5 million deaths and 68 million cases worldwide many are looking to a vaccine as a solution to their quarantine induced craze.<br>
+        As we learned vaccines are not a catch all solution, despite their strength they do not prevent tramsission from person to person, <br>
+        only reduce the time the body needs to begin fighting the virus. If countries like the United States overcome the incredible challenges of <br>
+        distribution of the vaccine, quarantine measures will still be needed for some time.<br>
+        Herd immunity takes time and a critical mass of the population vaccinated before having a real impact.<br>
+        </b></p>
+      <img src="data/covidCases.png" style="position: absolute; top: 300px; left: 900px; width: 788x; height: 420px;">
+      <p style="position: absolute; font-size: 20px; top: 700px; left: 100px; text-align: left">
+        <b>Just as a vaccine seems right around the corner, countries are experiencing another surge in cases <br>
+        straining our health systems to their breaking point.<br>
+        While vaccination of our at risk population will greatly lower the deaths caused by the virus, <br>
+        if we are unable to restrain ourselves once we get vaccinated, cases will continue to rise.
+        </b></p>
+    </div>
+  </div>
+  <! ARIKS SCRIPTS NEED TO BE RUN ON D3 Version 3, the following lines switch the version to import the correct versions, then store that version of d3 as var d3v3-->
+    <script src="https://d3js.org/d3.v3.js"></script>
+    <script src="//d3js.org/topojson.v1.min.js"></script>
+    <! SIMULATION SCRIPT BELOW -->
+      <script src="js/scriptSim.js"></script>
+      <script>
+        var d3v3 = window.d3;
+        window.d3 = null;
+      </script>
+      <! BACK TO D3 Version 6 FROM HERE ON -->
+        <script src="https://d3js.org/d3.v6.min.js"></script>
+        <script src="https://unpkg.com/d3-simple-slider"></script>
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/underscore@1.12.0/underscore-min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/3.0.9/fullpage.min.js" integrity="sha512-Gx/C4x1qubng2MWpJIxTPuWch9O88dhFFfpIl3WlqH0jPHtCiNdYsmJBFX0q5gIzFHmwkPzzYTlZC/Q7zgbwCw==" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script>
+          new fullpage('#fullPage', {
+            //navigation
+            navigation: true,
+            navigationTooltips: ['Introduction', 'Illness and Death', 'Simulation', 'Vaccine Mechanisms', 'Benefit of Vaccines', 'Access to Vaccines', 'Countries and Vaccine Access', 'Vaccine Denial', 'COVID-19'],
+            showActiveTooltip: true,
+            controlArrows: false,
+            slidesNavigation: true,
+            slidesNavPosition: 'bottom',
+
+            //scrolling
+            autoScrolling: true,
+            scrollingSpeed: 500,
+            easing: 'easeInOutCubic',
+
+            //Accessibility
+            keyboardScrolling: true,
+            animateAnchor: true,
+            recordHistory: true
+
+            //Design
+
+          })
+        </script>
+        <script src="js/mortalityVsVaccines.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/Income_VS_Vaccine.js"></script>
+</body>
+
+</html>
